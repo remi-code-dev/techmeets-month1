@@ -183,6 +183,8 @@
   }
 
   function render() {
+    taskList.textContent = '';
+
     const completedCount = tasks.filter(t => t.completed).length;
     stats.textContent = `${completedCount} / ${tasks.length} 件完了`;
 
