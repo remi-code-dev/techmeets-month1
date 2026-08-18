@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>名探偵コナン キャラクター紹介</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0f1b3d;
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 60px 20px;
+  }
+
+  .page {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  h1 {
+    margin: 0 0 12px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+  }
+
+  header p {
+    margin: 0;
+    font-size: 15px;
+    color: #9fb0d8;
+  }
+
+  .card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .card {
+    width: 260px;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body {
+    padding: 18px 20px 22px;
+  }
+
+  .card-title {
+    margin: 0 0 8px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a2244;
+  }
+
+  .card-desc {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #666;
+  }
+</style>
+</head>
+<body>
+
+  <div class="page">
+    <header>
+      <h1>名探偵コナン キャラクター紹介</h1>
+      <p>好きなキャラクターをまとめてみました</p>
+    </header>
+
+    <div class="card-grid" id="cardGrid"></div>
+  </div>
+
+  <script>
+    const characters = [
+      {
+        name: "江戸川コナン",
+        image: "https://placehold.jp/1a2244/ffffff/260x160.png?text=Conan",
+        desc: "高校生探偵・工藤新一が黒の組織に薬を飲まされ、小学生の姿になった主人公。持ち前の推理力で数々の難事件を解決する。"
+      },
+      {
+        name: "毛利蘭",
+        image: "https://placehold.jp/e63946/ffffff/260x160.png?text=Ran",
+        desc: "新一の幼なじみで空手の達人。コナンの正体が新一だとは気づかず、事件が起きるたびに助け合いながら成長していく。"
+      },
+      {
+        name: "服部平次",
+        image: "https://placehold.jp/2a9d8f/ffffff/260x160.png?text=Heiji",
+        desc: "大阪出身の高校生探偵。コナンの正体を知る数少ない人物の一人で、西の高校生探偵として東の新一とライバル関係にある。"
+      },
+      {
+        name: "灰原哀",
+        image: "https://placehold.jp/6a4c93/ffffff/260x160.png?text=Haibara",
+        desc: "元・黒の組織の科学者。自ら開発した薬でコナンと同じ小学生の姿になり、正体を知る協力者として事件解決を支える。"
+      },
+      {
+        name: "怪盗キッド",
+        image: "https://placehold.jp/264653/ffffff/260x160.png?text=Kid",
+        desc: "国際的な宝石泥棒でありながら、悪を許さない義賊。変装術とマジックを駆使し、コナンとの頭脳戦を繰り広げる。"
+      },
+      {
+        name: "毛利小五郎",
+        image: "https://placehold.jp/e76f51/ffffff/260x160.png?text=Kogoro",
+        desc: "蘭の父で私立探偵。コナンにこっそり眠らされ推理を代弁されることが多いが、「眠りの小五郎」として事件を解決する。"
+      }
+    ];
+
+    const grid = document.getElementById("cardGrid");
+
+    characters.forEach((c) => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const img = document.createElement("img");
+      img.src = c.image;
+      img.alt = c.name;
+
+      const body = document.createElement("div");
+      body.className = "card-body";
+
+      const title = document.createElement("h2");
+      title.className = "card-title";
+      title.textContent = c.name;
+
+      const desc = document.createElement("p");
+      desc.className = "card-desc";
+      desc.textContent = c.desc;
+
+      body.appendChild(title);
+      body.appendChild(desc);
+      card.appendChild(img);
+      card.appendChild(body);
+      grid.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
