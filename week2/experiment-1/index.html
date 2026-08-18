@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スライドショー</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1e1e2e;
+    font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  }
+
+  .slideshow {
+    background: #2a2a3d;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 640px;
+    width: 90%;
+  }
+
+  .slide-frame {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .slide-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .counter {
+    margin: 16px 0 8px;
+    color: #cfcfe6;
+    font-size: 14px;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .controls button {
+    padding: 10px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background: #6c63ff;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease, opacity 0.2s ease;
+  }
+
+  .controls button:hover:not(:disabled) {
+    background: #574fd6;
+  }
+
+  .controls button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+</style>
+</head>
+<body>
+
+  <div class="slideshow">
+    <div class="slide-frame">
+      <img id="slide-image" src="" alt="スライド画像">
+    </div>
+    <div class="counter" id="counter"></div>
+    <div class="controls">
+      <button id="prev-btn">← 前へ</button>
+      <button id="next-btn">次へ →</button>
+    </div>
+  </div>
+
+<script>
+  var slides = [
+    "https://placehold.jp/600x300.png",
+    "https://placehold.jp/600x300.png",
+    "https://placehold.jp/600x300.png",
+    "https://placehold.jp/600x300.png",
+    "https://placehold.jp/600x300.png"
+  ];
+
+  var currentIndex = 0;
+
+  var imageEl = document.getElementById("slide-image");
+  var counterEl = document.getElementById("counter");
+  var prevBtn = document.getElementById("prev-btn");
+  var nextBtn = document.getElementById("next-btn");
+
+  function renderSlide() {
+    imageEl.src = slides[currentIndex];
+    counterEl.textContent = (currentIndex + 1) + " / " + slides.length;
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === slides.length - 1;
+  }
+
+  prevBtn.addEventListener("click", function () {
+    if (currentIndex > 0) {
+      currentIndex--;
+      renderSlide();
+    }
+  });
+
+  nextBtn.addEventListener("click", function () {
+    if (currentIndex < slides.length - 1) {
+      currentIndex++;
+      renderSlide();
+    }
+  });
+
+  renderSlide();
+</script>
+
+</body>
+</html>
